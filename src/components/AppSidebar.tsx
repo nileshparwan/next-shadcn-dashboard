@@ -1,4 +1,6 @@
-import { Calendar, ChevronDown, ChevronUp, Home, Plus, Projector, Search, Settings, User2 } from "lucide-react"
+'use client'
+
+import { Calendar, ChevronDown, ChevronUp, HandFist, Home, Plus, Projector, Search, Settings, Sticker, User2 } from "lucide-react"
 import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupAction, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarMenu, SidebarMenuBadge, SidebarMenuButton, SidebarMenuItem, SidebarMenuSub, SidebarMenuSubButton, SidebarMenuSubItem, SidebarSeparator } from "./ui/sidebar"
 import {
     DropdownMenu,
@@ -11,6 +13,7 @@ import Image from "next/image"
 import React from "react"
 import AppSidebarSkeleton from "./AppSidebarSkeleton"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "./ui/collapsible"
+import useAppStore from "@/store/useAppStore"
 
 const items = [
     {
@@ -36,8 +39,10 @@ const items = [
 ]
 
 export default function AppSidebar() {
+    const { sidebarVariant } = useAppStore();
+
     return (
-        <Sidebar collapsible="icon" side="left" variant="sidebar">
+        <Sidebar collapsible="icon" side="left" variant={sidebarVariant}>
             <SidebarHeader className="py-3">
                 <SidebarMenu>
                     <SidebarMenuItem>
@@ -62,7 +67,7 @@ export default function AppSidebar() {
                                 {
                                     items.map((item, index) => (
                                         <SidebarMenuItem key={item.title}>
-                                            <SidebarMenuButton asChild>
+                                            <SidebarMenuButton asChild isActive={index === 0}>
                                                 <Link href={item.url}>
                                                     <item.icon />
                                                     <span>{item.title}</span>
@@ -87,7 +92,7 @@ export default function AppSidebar() {
                 <SidebarGroup>
                     <SidebarGroupLabel>Projects</SidebarGroupLabel>
 
-                    <SidebarGroupAction>
+                    <SidebarGroupAction title="Add Project">
                         <Plus />
                         <span className="sr-only">Add project</span>
                     </SidebarGroupAction>
@@ -132,20 +137,16 @@ export default function AppSidebar() {
                                 <SidebarGroupContent>
                                     <SidebarMenu>
                                         <SidebarMenuItem>
-                                            <SidebarMenuButton asChild>
-                                                <Link href="/">
-                                                    <Projector />
-                                                    See All Projects
-                                                </Link>
+                                            <SidebarMenuButton>
+                                                <HandFist />
+                                                Support
                                             </SidebarMenuButton>
                                         </SidebarMenuItem>
 
                                         <SidebarMenuItem>
-                                            <SidebarMenuButton asChild>
-                                                <Link href="/">
-                                                    <Plus />
-                                                    Add Project
-                                                </Link>
+                                            <SidebarMenuButton>
+                                                <Sticker />
+                                                Feedback
                                             </SidebarMenuButton>
                                         </SidebarMenuItem>
                                     </SidebarMenu>
