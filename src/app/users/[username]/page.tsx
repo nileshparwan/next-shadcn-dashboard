@@ -22,6 +22,8 @@ import {
 } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
 import EditUser from "@/components/EditUser"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { AppLineChart } from "@/components/AppLineChart"
 
 export default function SingleUserPage() {
     return (
@@ -162,10 +164,24 @@ export default function SingleUserPage() {
                 {/* RIGHT */}
                 <div className="w-full xl:w-2/3 space-y-6">
                     {/* User card container */}
-                    <div className="bg-primary-foreground p-4 rounded-lg">User card</div>
+                    <div className="bg-primary-foreground p-4 rounded-lg">
+                        <div className="flex items-center gap-2">
+                            <Avatar className="size-12">
+                                <AvatarImage src="https://github.com/shadcn.png" alt="John Doe" />
+                                <AvatarFallback>CN</AvatarFallback>
+                            </Avatar>
+
+                            <h1 className="text-xl font-semibold">John Doe</h1>
+                        </div>
+
+                        <p className="text-sm text-muted-foreground mt-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Est tempore atque possimus facilis labore expedita mollitia recusandae hic ab repudiandae esse maxime, aut unde harum similique at. Earum, cum nulla!</p>
+                    </div>
 
                     {/* chart container */}
-                    <div className="bg-primary-foreground p-4 rounded-lg">Chart</div>
+                    <div className="bg-primary-foreground p-4 rounded-lg">
+                        <h1 className="text-xl font-semibold mb-6">User Activity</h1>
+                        <AppLineChart />
+                    </div>
                 </div>
             </div>
         </div>

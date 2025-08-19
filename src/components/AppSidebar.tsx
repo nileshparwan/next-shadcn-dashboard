@@ -43,7 +43,7 @@ export default function AppSidebar() {
 
     return (
         <Sidebar collapsible="icon" side="left" variant={sidebarVariant}>
-            <SidebarHeader className="py-3">
+            <SidebarHeader className="py-[18px]">
                 <SidebarMenu>
                     <SidebarMenuItem>
                         <SidebarMenuButton asChild>
@@ -56,7 +56,7 @@ export default function AppSidebar() {
                 </SidebarMenu>
             </SidebarHeader>
 
-            <SidebarSeparator />
+            <SidebarSeparator className="-ml-0.5"/>
 
             <SidebarContent>
                 <SidebarGroup>

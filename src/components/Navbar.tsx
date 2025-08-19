@@ -20,8 +20,8 @@ export default function Navbar() {
     // const { toggleSidebar } = useSidebar();
 
     return (
-        <nav className="p-4 flex items-center justify-between">
-            <SidebarTrigger/>
+        <nav className="p-4 flex items-center justify-between sticky top-0 bg-background z-10 border-b mb-4">
+            <SidebarTrigger />
 
             {/* custom sidebar collapse */}
             {/* <Button variant="outline" onClick={toggleSidebar} size="icon">
@@ -57,16 +57,18 @@ export default function Navbar() {
                 <DropdownMenu>
                     <DropdownMenuTrigger>
                         <Avatar>
-                            <AvatarImage src="https://github.com/shadcn.png" />
+                            <AvatarImage src="https://github.com/shadcn.png" alt="John Doe" />
                             <AvatarFallback>CN</AvatarFallback>
                         </Avatar>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent sideOffset={10}>
                         <DropdownMenuLabel>My Account</DropdownMenuLabel>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem>
-                            <User className="h-[1.2rem] w-[1.2rem] mr-2" />
-                            Profile
+                        <DropdownMenuItem asChild>
+                            <Link href="/users/john.doe">
+                                <User className="h-[1.2rem] w-[1.2rem] mr-2" />
+                                Profile
+                            </Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem>
                             <Settings className="h-[1.2rem] w-[1.2rem] mr-2" />
